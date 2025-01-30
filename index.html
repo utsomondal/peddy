@@ -4,17 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Peddy - Pet Adoption</title>
+    <link rel="stylesheet" href="style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
       rel="stylesheet"
       type="text/css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/15816fb69a.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <div class="container">
+    <div class="container mx-auto">
       <header>
-        <nav></nav>
+        <nav>
+          <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div
+                  tabindex="0"
+                  role="button"
+                  class="btn btn-ghost lg:hidden"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h8m-8 6h16"
+                    />
+                  </svg>
+                </div>
+                <ul
+                  tabindex="0"
+                  class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-[#131313]"
+                >
+                  <li><a>Home</a></li>
+                  <li><a>Shop</a></li>
+                  <li><a>Contact</a></li>
+                </ul>
+              </div>
+              <div class="flex justify-start items-center gap-3">
+                <img src="images/logo.webp" alt="logo" class="pl-1 lg:pl-0" />
+                <span class="text-3xl font-bold text-[#131313]">Peddy</span>
+              </div>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+              <ul class="gap-6 menu-horizontal cursor-pointer px-1 text-[#131313] text-base font-medium">
+                <li class="hover:text-[#0E7A81] transition-all duration-200"><a>Home</a></li>
+                <li class="hover:text-[#0E7A81] transition-all duration-200"><a>Shop</a></li>
+                <li class="hover:text-[#0E7A81] transition-all duration-200"><a>Contact</a></li>
+              </ul>
+            </div>
+            <div class="navbar-end pr-1">
+              <i class="fa-solid fa-user border border-solid border-[#131313B3] rounded-full p-4 cursor-pointer hover:bg-[#0E7A81] hover:text-white transition-all duration-200"></i> 
+            </div>
+          </div>
+        </nav>
       </header>
       <main></main>
       <footer></footer>
