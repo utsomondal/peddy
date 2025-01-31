@@ -75,19 +75,18 @@ const displayAllPets = (pets) => {
                     <i class="fa-solid fa-dollar-sign mr-1"></i> Price: ${pet.price ? pet.price + "$" : "N/A"}
                 </p>
                 <div class="card-actions justify-start">
-                    <button onclick="handleLike(${pet.petId})" class="btn like-btn text-[#13131399] text-xl bg-base-100 hover:bg-base-200"">
+                    <button onclick="handleLike(${pet.petId})" class="btn text-[#13131399] text-xl bg-base-100 hover:bg-base-200">
                         <i class="fa-regular fa-thumbs-up"></i>
                     </button>
-                    <button class="btn adopt-btn text-[#0E7A81] text-lg flex-grow bg-base-100 hover:bg-base-200"">
+                    <button onclick="handleAdopt(${pet.petId}, this)" class="btn text-[#0E7A81] text-lg flex-grow bg-base-100 hover:bg-base-200">
                         Adopt
                     </button>
-                    <button class="btn details-btn text-[#0E7A81] text-lg flex-grow bg-base-100 hover:bg-base-200">
+                    <button onclick="handleDetails(${pet.petId})" class="btn text-[#0E7A81] text-lg flex-grow bg-base-100 hover:bg-base-200">
                         Details
                     </button>
                 </div>
             </div>
         `;
-
         petsContainer.appendChild(petCard);
     });
 };
@@ -96,23 +95,46 @@ const handleLike = (petId) => {
     loadAllPetsById(petId);
 };
 
-const handleAdopt = (petId) => {
-    // console.log(`Adopted pet with ID: ${petId}`);
-    // will work later
+const handleAdopt = (petId, btn) => {
+    countdown = 3;
+    btn.disable = true;
+    const interval = setInterval(() => {
+        btn.textContent = `Adopting in ${countdown}`;
+        countdown--;
+        if (countdown < 0) {
+            clearInterval(interval);
+            btn.textContent = "Adopted";
+            btn.classList = `btn text-[#0E7A81] text-lg flex-grow bg-base-100 hover:bg-base-200 cursor-not-allowed`;
+        }
+    }, 1000);
+
 };
 
-const handleDetails = (petId) => {
-    // console.log(`Viewing details of pet ID: ${petId}`);
-    // will work later
+const handleDetails = async (petId) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
+    const data = await res.json();
+    const pet = data.petData;
+    displayPetDetails(pet);
+    pet_details_modal.showModal();
 };
-
+const displayPetDetails = (pet) => {
+    document.getElementById('pet-img').src = `${pet.image}`;
+    document.getElementById('pet-name').innerText = `${pet.pet_name}`;
+    document.getElementById('pet-breed').innerText = `Breed: ${pet.breed || "Not Available"}`;
+    document.getElementById('pet-birth').innerText = `Birth: ${pet.date_of_birth ? pet.date_of_birth.slice(0, 4) : "Not Mentioned"}`;
+    document.getElementById('pet-gender').innerText = `Gender: ${pet.gender || "Not Mentioned"}`;
+    document.getElementById('vaccine').innerText = `Vaccinated status: ${pet.vaccinated_status || "Not Mentioned"}`;
+    document.getElementById('pet-price').innerText = `Price: ${pet.price ? pet.price + "$" : "N/A"}`;
+    document.getElementById('details-info').innerText=`${pet.pet_details}`;
+}
 
 const loadAllPetsById = async (petId) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`);
     const data = await res.json();
     const likedPet = data.petData;
-    displayLikedPets(likedPet)
+    displayLikedPets(likedPet);
 }
+
 const displayLikedPets = (likedPet) => {
     const likedPetsContainer = document.getElementById('liked-pets-container');
     // Prevent duplicate likes
@@ -125,9 +147,6 @@ const displayLikedPets = (likedPet) => {
     `;
     likedPetsContainer.appendChild(imgDiv);
 };
-
-
-
 
 loadPetCategories();
 loadAllPets();
