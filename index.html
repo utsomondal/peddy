@@ -135,13 +135,16 @@
               Sort By Price
             </button>
           </div>
-          <!-- all pets collections shows here -->
-          <div class="flex mt-10">
-            <div id="pet-collections">
-              <!-- all pet will be added dynamically -->
+          <!-- all pets showing start here -->
+          <div class="flex flex-wrap md:flex-nowrap gap-10 mt-10">
+            <!-- All Pets Grid -->
+            <div id="pet-collections" class="flex-1 min-w-[60%]"></div>
+        
+            <!-- Liked Pets Grid -->
+            <div id="liked-pets-container" class="grid grid-cols-2 gap-4 h-max p-2">
+
             </div>
-            <div></div>
-          </div>
+        </div>        
         </section>
       </main>
       <footer class="flex flex-col md:flex-row justify-evenly bg-[#131313] px-6 md:px-16 lg:px-36 py-12 lg:py-24 text-white gap-10 md:gap-20">
@@ -168,7 +171,7 @@
         <!-- Middle Section (Useful Links) -->
         <nav>
           <h6 class="text-xl font-semibold mb-3">Useful Links</h6>
-          <div class="flex flex-col space-y-2">
+          <div class="flex flex-col space-y-2 cursor-pointer">
             <a class="hover:text-[#0E7A81] transition-all duration-200">Home</a>
             <a class="hover:text-[#0E7A81] transition-all duration-200">About Us</a>
             <a class="hover:text-[#0E7A81] transition-all duration-200">Animals</a>
