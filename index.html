@@ -144,7 +144,59 @@
           </div>
         </section>
       </main>
-      <footer></footer>
+      <footer class="flex flex-col md:flex-row justify-evenly bg-[#131313] px-6 md:px-16 lg:px-36 py-12 lg:py-24 text-white gap-10 md:gap-20">
+        <!-- Left Section (Brand Info & Social Links) -->
+        <nav>
+          <div class="flex justify-start items-center gap-3">
+            <img src="images/logo.webp" alt="logo" class="pl-1 lg:pl-0" />
+            <span class="text-3xl font-bold text-white">Peddy</span>
+          </div>
+          <div class="text-base text-[#FFFFFFE6] space-y-2 mt-4">
+            <p>Location: av. Washington 165, NY CA 54003</p>
+            <p>Phone: +31 85 964 47 25</p>
+            <p>Email: info@yourdomain.com</p>
+            <p>Opening hours: 9.00 AM - 5.00 PM</p>
+          </div>
+          <div class="flex items-center gap-3 mt-3 text-2xl cursor-pointer">
+            <i class="fa-brands fa-facebook hover:text-[#0E7A81]"></i>
+            <i class="fa-brands fa-x-twitter hover:text-[#0E7A81]"></i>
+            <i class="fa-brands fa-youtube hover:text-[#0E7A81]"></i>
+            <i class="fa-brands fa-square-instagram hover:text-[#0E7A81]"></i>
+          </div>
+        </nav>
+      
+        <!-- Middle Section (Useful Links) -->
+        <nav>
+          <h6 class="text-xl font-semibold mb-3">Useful Links</h6>
+          <div class="flex flex-col space-y-2">
+            <a class="hover:text-[#0E7A81] transition-all duration-200">Home</a>
+            <a class="hover:text-[#0E7A81] transition-all duration-200">About Us</a>
+            <a class="hover:text-[#0E7A81] transition-all duration-200">Animals</a>
+            <a class="hover:text-[#0E7A81] transition-all duration-200">Foundation</a>
+            <a class="hover:text-[#0E7A81] transition-all duration-200">Contact</a>
+          </div>
+        </nav>
+      
+        <!-- Right Section (Subscription Form) -->
+        <form>
+          <h6 class="text-xl font-semibold mb-3">Drop a message</h6>
+          <fieldset class="form-control">
+            <label class="label">
+              <span class="label-text text-white">Enter your email address</span>
+            </label>
+            <div class="flex flex-col">
+              <input
+                type="text"
+                placeholder="username@site.com"
+                class="input input-bordered flex-grow text-black"
+              />
+              <button class="btn mt-1 bg-[#0E7A81] border-[#0E7A81] text-white hover:bg-[#0C6065]">
+                Subscribe
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </footer>      
     </div>
     <!-- JavaScript -->
     <script src="scripts/index.js"></script>
