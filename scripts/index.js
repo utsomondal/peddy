@@ -28,17 +28,26 @@ const loadPetsByCategory = async (category) => {
     const pets = data.data;
     displayAllPets(pets);
 }
+let allPets = [];
 
-// load all pets
 const loadAllPets = async () => {
+    toggleLoadingSpinner(true);
     const res = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
     const data = await res.json();
-    const pets = data.pets;
-    displayAllPets(pets);
-}
+    allPets = data.pets;
+    displayAllPets(allPets);
+};
+
+const sortAllPetsByPrice = () => {
+    if (allPets.length === 0) return;
+    const sortedPets = [...allPets].sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
+
+    displayAllPets(sortedPets);
+};
+
 const displayAllPets = (pets) => {
     const petsContainer = document.getElementById('pet-collections');
-    petsContainer.innerHTML = ''; // Clear previous content
+    petsContainer.innerHTML = '';
 
     if (pets.length === 0) {
         petsContainer.className = "flex items-center justify-center flex-grow";
@@ -50,7 +59,6 @@ const displayAllPets = (pets) => {
         return;
     }
 
-    // Set grid layout when pets are available
     petsContainer.className = "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
 
     pets.forEach(pet => {
@@ -89,8 +97,11 @@ const displayAllPets = (pets) => {
         `;
         petsContainer.appendChild(petCard);
     });
+    toggleLoadingSpinner(false);
 };
-// Define event handlers
+
+
+
 const handleLike = (petId) => {
     loadAllPetsById(petId);
 };
@@ -117,6 +128,7 @@ const handleDetails = async (petId) => {
     displayPetDetails(pet);
     pet_details_modal.showModal();
 };
+
 const displayPetDetails = (pet) => {
     document.getElementById('pet-img').src = `${pet.image}`;
     document.getElementById('pet-name').innerText = `${pet.pet_name}`;
@@ -125,7 +137,7 @@ const displayPetDetails = (pet) => {
     document.getElementById('pet-gender').innerText = `Gender: ${pet.gender || "Not Mentioned"}`;
     document.getElementById('vaccine').innerText = `Vaccinated status: ${pet.vaccinated_status || "Not Mentioned"}`;
     document.getElementById('pet-price').innerText = `Price: ${pet.price ? pet.price + "$" : "N/A"}`;
-    document.getElementById('details-info').innerText=`${pet.pet_details}`;
+    document.getElementById('details-info').innerText = `${pet.pet_details}`;
 }
 
 const loadAllPetsById = async (petId) => {
@@ -147,6 +159,18 @@ const displayLikedPets = (likedPet) => {
     `;
     likedPetsContainer.appendChild(imgDiv);
 };
+
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading) {
+        loadingSpinner.classList.remove("hidden");
+        loadingSpinner.classList.add("flex");
+    } else {
+        loadingSpinner.classList.add("hidden");
+        loadingSpinner.classList.remove("flex");
+    }
+}
+
 
 loadPetCategories();
 loadAllPets();

@@ -130,10 +130,14 @@
           <div class="flex justify-between items-center">
             <h3 class="text-lg lg:text-2xl font-black">Best deal For You</h3>
             <button
+              onclick="sortAllPetsByPrice()"
               class="btn bg-[#0E7A81] text-white rounded-xl py-2 lg:py-4 px-5 lg:px-8 font-medium hover:bg-[#0C6065] transition-all duration-200"
             >
               Sort By Price
             </button>
+          </div>
+          <div id="loading-spinner" class="justify-center items-center min-h-[400px] hidden">
+            <span class="loading loading-spinner loading-lg text-[#0E7A81]"></span>
           </div>
           <!-- all pets showing start here -->
           <div class="flex flex-wrap md:flex-nowrap gap-10 mt-10">
