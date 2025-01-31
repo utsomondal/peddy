@@ -31,11 +31,11 @@ Peddy is a pet adoption platform where users can explore different pet categorie
 ---
 
 ## 🎯 ES6 Features Used
-- ✅ **Arrow functions** for cleaner syntax.
-- ✅ **Template literals** for dynamic content rendering.
-- ✅ **Destructuring** for extracting API response data.
-- ✅ **Spread operator** for creating sorted pet arrays.
-- ✅ **Async/Await** for efficient API handling.
+✅ **Arrow functions** - Used for cleaner syntax.  
+✅ **Template literals** - Used for dynamic content rendering.  
+✅ **Destructuring** - Used for extracting API response data.  
+✅ **Spread operator** - Used for creating sorted pet arrays.  
+✅ **Async/Await** - Used for efficient API handling.  
 
 ---
 
