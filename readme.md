@@ -40,7 +40,7 @@ Peddy is a pet adoption platform where users can explore different pet categorie
 ---
 
 ## 🌍 Live Preview
-🔗 **[View Live Project](https://utsomondal.github.io/peddy/)
+🔗 [View Live Project](https://utsomondal.github.io/peddy/)
 
 ---
 
